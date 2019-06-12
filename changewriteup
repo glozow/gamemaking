@@ -1,0 +1,21 @@
+# Change! Adjustable! Writeup
+Gloria Zhao
+
+## New Feature: Adjustable Width and Height.
+
+### Game-Specific Menu
+Upon opening the game-specific menu, there are two new options:
+* (W)idth to change the width of the board. Width is also the number of pieces for each player.
+* (H)eight to change the height of the board.
+The MaxWidth is 4 and MaxHeight is 3 right now because the database gets too big if you go further.
+As soon as you select a new width or height, the default board is created for that board size and set as the initial position.
+
+### Print Functions
+The print position function is also now able to print boards of any width or height or position.
+
+### Under The Hood
+The board representation is still an array of BlankOX's, but imagine a matrix with HEIGHT+2 row and WIDTH+1 columns.
+
+
+### Further Recommendations
+Right now, the number of positions is 3^BOARDSIZE*2 which is extremely space-inefficient.

@@ -108,10 +108,21 @@ class ChangeGame:
             string += str(i)
         return string
 
-    # class method 
+    # class method
     def validateString(string):
         string = string[1:]
         return string.count('0') == 4 and string.count('1')  == 4
+
+    def makeGameFromString(string): #string should be 24 chars long: turn + 23 positions
+        #print(string)
+        if not ChangeGame.validateString(string):
+            print('error: ', string, ' is not a valid game')
+            return None
+        t = int(string[0])
+        board = []
+        for i in string[1:]:
+            board += [int(i)]
+        return ChangeGame(board, t)
 
     def initializeBoard(self):
         for piece in self.computer.pieces:
@@ -196,7 +207,16 @@ class ChangeGame:
         print('   ', self.p(b[20]), ' ', self.p(b[21]), ' ', self.p(b[22]), ' ', self.p(b[23]))
 
 
+def testStrings():
+    strings = ['0211112222222222222220000', '0211220221222212222022200', '0221212022202222221100222']
+    for s in strings:
+        game = ChangeGame.makeGameFromString(s)
+        game.printGameBoard()
+
+
 game = ChangeGame()
 game.printNumberBoard()
 game.printGameBoard()
 print(game.toString())
+
+testStrings()

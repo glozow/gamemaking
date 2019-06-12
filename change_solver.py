@@ -1,35 +1,13 @@
 from change import ChangeGame
+from queue import Queue
 
-TotalPositions  =   3**24
 dictionary = {}
 
-class Queue:
-    def __init__(self):
-        self.front = 0
-        self.back = 0
-        self.items = []
-        self.capacity = 0
-
-    def push(self, item):
-        self.items += [item]
-        self.back += 1
-        self.capacity += 1
-
-    def pop(self):
-        if self.capacity == 0:
-            return None
-        self.front += 1
-        self.capacity -= 1
-        return self.items[self.front-1]
+def permutation_dict(string):
+    perms = {}
 
 
-def makeGameFromString(string): #string should be 24 chars long: turn + 23 positions
-    print(string)
-    t = int(string[0])
-    board = []
-    for i in string[1:]:
-        board += [int(i)]
-    return ChangeGame(board, t)
+
 
 def newGame():
     game = ChangeGame()
